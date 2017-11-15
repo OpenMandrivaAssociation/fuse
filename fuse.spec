@@ -16,7 +16,8 @@ Patch1:		fuse-3.2.0-install-nonroot.patch
 
 BuildRequires:	libtool
 BuildRequires:	gettext-devel
-BuildRequires:	meson ninja
+BuildRequires:	meson
+BuildRequires:	pkgconfig(libudev)
 Requires:	which
 Requires(preun):	rpm-helper
 
@@ -71,11 +72,6 @@ mv %{buildroot}%{_libdir}/libfuse3.so.*.* %{buildroot}/%{_lib}
 ln -sr %{buildroot}/%{_lib}/libfuse3.*.* %{buildroot}%{_libdir}/libfuse3.so
 
 rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/rules.d
-
-%preun
-if [ -f %{_sysconfdir}/rc.d/init.d/fuse ]; then
-    chkconfig --del fuse
-fi
 
 %files
 %{_sysconfdir}/init.d/fuse3
