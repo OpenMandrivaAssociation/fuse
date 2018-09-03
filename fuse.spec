@@ -5,8 +5,8 @@
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.2.1
-Release:	2
+Version:	3.2.6
+Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
@@ -75,11 +75,12 @@ rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/ru
 
 %files
 %{_sysconfdir}/init.d/fuse3
+%config(noreplace) %{_sysconfdir}/fuse.conf
 /lib/udev/rules.d/99-fuse3.rules
 %{_bindir}/fusermount3
 %{_sbindir}/mount.fuse3
 %{_mandir}/man1/fusermount3.1*
-%{_mandir}/man8/mount.fuse.8*
+%{_mandir}/man8/mount.fuse3.8*
 
 %files -n %{libname}
 /%{_lib}/libfuse3.so.%{major}*
