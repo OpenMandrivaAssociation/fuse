@@ -6,7 +6,7 @@
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
 Version:	3.2.6
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
@@ -66,10 +66,13 @@ Static libraries for fuse.
 %install
 %meson_install
 
-install -d %{buildroot}/%{_lib}
+install -d %{buildroot}/{%{_lib},bin,sbin}
 rm %{buildroot}%{_libdir}/libfuse3.so
 mv %{buildroot}%{_libdir}/libfuse3.so.*.* %{buildroot}/%{_lib}
 ln -sr %{buildroot}/%{_lib}/libfuse3.*.* %{buildroot}%{_libdir}/libfuse3.so
+
+ln -s %{buildroot}%{_bindir}/fusermount3 %{buildroot}/bin/fusermount3
+ln -s %{buildroot}%{_sbindir}/mount.fuse3 %{buildroot}/sbin/mount.fuse3
 
 rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/rules.d
 
@@ -77,6 +80,8 @@ rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/ru
 %{_sysconfdir}/init.d/fuse3
 %config(noreplace) %{_sysconfdir}/fuse.conf
 /lib/udev/rules.d/99-fuse3.rules
+/bin/fusermount3
+/sbin/mount.fuse3
 %{_bindir}/fusermount3
 %{_sbindir}/mount.fuse3
 %{_mandir}/man1/fusermount3.1*
