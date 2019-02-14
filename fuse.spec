@@ -71,8 +71,8 @@ rm %{buildroot}%{_libdir}/libfuse3.so
 mv %{buildroot}%{_libdir}/libfuse3.so.*.* %{buildroot}/%{_lib}
 ln -sr %{buildroot}/%{_lib}/libfuse3.*.* %{buildroot}%{_libdir}/libfuse3.so
 
-ln -s %{buildroot}%{_bindir}/fusermount3 %{buildroot}/bin/fusermount3
-ln -s %{buildroot}%{_sbindir}/mount.fuse3 %{buildroot}/sbin/mount.fuse3
+ln -sr %{buildroot}%{_bindir}/fusermount3 %{buildroot}/bin/fusermount3
+ln -sr %{buildroot}%{_sbindir}/mount.fuse3 %{buildroot}/sbin/mount.fuse3
 
 rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/rules.d
 
