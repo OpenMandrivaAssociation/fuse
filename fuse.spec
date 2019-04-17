@@ -10,7 +10,7 @@ Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
-Source0:	https://github.com/libfuse/libfuse/archive/fuse-%{version}.tar.gz
+Source0:	https://github.com/libfuse/libfuse/archive/fuse-%{version}.tar.xz
 Patch0:		mount-readlink-hang-workaround.patch
 Patch1:		fuse-3.2.0-install-nonroot.patch
 
