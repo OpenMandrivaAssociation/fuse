@@ -56,7 +56,7 @@ Requires:	%{devname} = %{EVRD}
 Static libraries for fuse.
 
 %prep
-%setup -qn libfuse-fuse-%{version}
+%setup -q
 %apply_patches
 %meson
 
