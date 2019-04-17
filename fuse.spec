@@ -5,12 +5,12 @@
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.4.1
+Version:	3.5.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
-Source0:	https://github.com/libfuse/libfuse/archive/fuse-%{version}.tar.gz
+Source0:	https://github.com/libfuse/libfuse/archive/fuse-%{version}.tar.xz
 Patch0:		mount-readlink-hang-workaround.patch
 Patch1:		fuse-3.2.0-install-nonroot.patch
 
@@ -56,7 +56,7 @@ Requires:	%{devname} = %{EVRD}
 Static libraries for fuse.
 
 %prep
-%setup -qn libfuse-fuse-%{version}
+%setup -q
 %apply_patches
 %meson
 
