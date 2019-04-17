@@ -2,6 +2,9 @@
 %define	libname %mklibname %{name}3 %{major}
 %define	devname %mklibname %{name}3 -d
 %define	static %mklibname %{name}3 -d -s
+# https://github.com/libfuse/libfuse/issues/198
+# lto not supported ye
+%define _disable_lto %nil
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
