@@ -3,12 +3,12 @@
 %define	devname %mklibname %{name}3 -d
 %define	static %mklibname %{name}3 -d -s
 # https://github.com/libfuse/libfuse/issues/198
-# lto not supported ye
-%define _disable_lto %nil
+# lto not supported yet
+%define _disable_lto 1
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.5.0
+Version:	3.7.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
@@ -59,8 +59,7 @@ Requires:	%{devname} = %{EVRD}
 Static libraries for fuse.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 %meson
 
 %build
