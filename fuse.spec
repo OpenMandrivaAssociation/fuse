@@ -57,7 +57,7 @@ Static libraries for fuse.
 
 %prep
 %autosetup -p1
-%meson
+%meson -Duseroot=false
 
 %build
 %meson_build
