@@ -3,13 +3,13 @@
 %define devname %mklibname %{name}3 -d
 %define static %mklibname %{name}3 -d -s
 # https://github.com/libfuse/libfuse/issues/198
-# lto not supported yet
-%define _disable_lto 1
+# gcc lto not supported yet, but doesn't seem to affect clang
+#define _disable_lto 1
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
 Version:	3.7.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
@@ -57,7 +57,7 @@ Static libraries for fuse.
 
 %prep
 %autosetup -p1
-%meson -Duseroot=false
+%meson -Duseroot=false -Db_lto=true
 
 %build
 %meson_build
@@ -79,9 +79,9 @@ rm -rf %{buildroot}%{_sysconfdir}/init.d
 %files
 %config(noreplace) %{_sysconfdir}/fuse.conf
 /lib/udev/rules.d/99-fuse3.rules
-/bin/fusermount3
+%attr(4755,root,root) /bin/fusermount3
 /sbin/mount.fuse3
-%{_bindir}/fusermount3
+%attr(4755,root,root) %{_bindir}/fusermount3
 %{_sbindir}/mount.fuse3
 %{_mandir}/man1/fusermount3.1*
 %{_mandir}/man8/mount.fuse3.8*
