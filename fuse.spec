@@ -8,7 +8,7 @@
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.8.0
+Version:	3.9.0
 Release:	1
 License:	GPLv2+
 Group:		System/Base
