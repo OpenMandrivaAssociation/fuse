@@ -8,12 +8,12 @@
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.9.0
+Version:	3.9.1
 Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
-Source0:	https://github.com/libfuse/libfuse/archive/fuse-%{version}.tar.xz
+Source0:	https://github.com/libfuse/libfuse/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:	libtool
 BuildRequires:	gettext-devel
