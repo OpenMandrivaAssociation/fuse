@@ -9,7 +9,7 @@
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
 Version:	3.10.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
@@ -19,7 +19,6 @@ BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	meson
 BuildRequires:	pkgconfig(libudev)
-Requires(preun):	rpm-helper
 
 %description
 FUSE (Filesystem in USErspace) is a simple interface for userspace
