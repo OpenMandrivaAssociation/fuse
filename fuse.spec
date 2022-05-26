@@ -9,12 +9,11 @@
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
 Version:	3.11.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
 Source0:	https://github.com/libfuse/libfuse/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
-
 BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	meson
@@ -64,29 +63,24 @@ Static libraries for fuse.
 %install
 %meson_install
 
-install -d %{buildroot}/{%{_lib},bin,sbin}
-rm %{buildroot}%{_libdir}/libfuse3.so
-mv %{buildroot}%{_libdir}/libfuse3.so.*.* %{buildroot}/%{_lib}
-ln -sr %{buildroot}/%{_lib}/libfuse3.*.* %{buildroot}%{_libdir}/libfuse3.so
-
-ln -sr %{buildroot}%{_bindir}/fusermount3 %{buildroot}/bin/fusermount3
-ln -sr %{buildroot}%{_sbindir}/mount.fuse3 %{buildroot}/sbin/mount.fuse3
-
+install -d %{buildroot}/{bin,sbin}
+ln -sr %{_bindir}/fusermount3 %{buildroot}/bin/fusermount3
+ln -sr %{_sbindir}/mount.fuse3 %{buildroot}/sbin/mount.fuse3
 rm -rf %{buildroot}%{_sysconfdir}/rc.d/init.d %{buildroot}%{_sysconfdir}/udev/rules.d
 rm -rf %{buildroot}%{_sysconfdir}/init.d
 
 %files
 %config(noreplace) %{_sysconfdir}/fuse.conf
-/lib/udev/rules.d/99-fuse3.rules
+%{_udevrulesdir}/99-fuse3.rules
 %attr(4755,root,root) /bin/fusermount3
 /sbin/mount.fuse3
 %attr(4755,root,root) %{_bindir}/fusermount3
 %{_sbindir}/mount.fuse3
-%{_mandir}/man1/fusermount3.1*
-%{_mandir}/man8/mount.fuse3.8*
+%doc %{_mandir}/man1/fusermount3.1*
+%doc %{_mandir}/man8/mount.fuse3.8*
 
 %files -n %{libname}
-/%{_lib}/libfuse3.so.%{major}*
+%{_libdir}/libfuse3.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/*
