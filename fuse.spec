@@ -9,7 +9,7 @@
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
 Version:	3.11.0
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
@@ -29,6 +29,7 @@ create and mount their own filesystem implementations.
 Summary:	Libraries for fuse
 Group:		System/Libraries
 License:	LGPLv2+
+Obsoletes:	%{mklibname %{name}3 %{major}} < %{EVRD}
 
 %description -n %{libname}
 Libraries for fuse.
