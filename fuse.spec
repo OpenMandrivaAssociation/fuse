@@ -8,8 +8,8 @@
 
 Summary:	Interface for userspace programs to export a virtual filesystem to the kernel
 Name:		fuse
-Version:	3.11.0
-Release:	4
+Version:	3.12.0
+Release:	1
 License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
