@@ -1,2 +1,3 @@
 sources:
-  fuse-3.12.0.tar.xz: 75597e342e9e919baa0923a931ca2a69e8afc464
+  files-before-rpm: f3f14095ef548198abc9bdf51922f9c481d5fe27
+  fuse-3.13.0.tar.xz: 46d1bce5730018dd5c41c08ad7900492bc8c14d2
