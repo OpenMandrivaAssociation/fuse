@@ -1,4 +1,2 @@
 sources:
-  files-before-rpm: f3f14095ef548198abc9bdf51922f9c481d5fe27
-  fuse-3.14.0.tar.xz: 3820905cd399fe9350285e76e72ceace656a761f
-  fuse-3.15.0.tar.xz: 127159698c7695c9b06fd16a7d674e7a011c62aa
+  fuse-3.15.1.tar.xz: b4a38f03f22dc2b75fe5d1d3cd643ab204583f13
