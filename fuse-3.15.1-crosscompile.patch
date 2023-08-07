@@ -1,0 +1,21 @@
+diff -up fuse-3.15.1/meson.build.omv~ fuse-3.15.1/meson.build
+--- fuse-3.15.1/meson.build.omv~	2023-08-07 18:04:28.320954602 +0200
++++ fuse-3.15.1/meson.build	2023-08-07 18:04:02.144683214 +0200
+@@ -151,6 +151,7 @@ else
+      message('Disabling versioned libc symbols')
+ endif
+ 
++if meson.can_run_host_binaries()
+ # Older versions of musl libc don't unescape entries in /etc/mtab
+ # Try to detect this behaviour, and work around, if necessary.
+ detect_getmntent_needs_unescape = '''
+@@ -182,6 +183,9 @@ if result.compiled() and result.returnco
+   message('getmntent does not unescape')
+   add_project_arguments('-DGETMNTENT_NEEDS_UNESCAPING', language: 'c')
+ endif
++else
++  # If we can't detect it, we assume stuff is sane...
++endif
+ 
+ # Write private test results into fuse_config.h (stored in build directory)
+ configure_file(output: 'fuse_config.h', configuration : private_cfg)

@@ -14,6 +14,7 @@ License:	GPLv2+
 Group:		System/Base
 Url:		https://github.com/libfuse/libfuse
 Source0:	https://github.com/libfuse/libfuse/releases/download/%{name}-%{version}/%{name}-%{version}.tar.xz
+Patch0:		fuse-3.15.1-crosscompile.patch
 BuildRequires:	libtool
 BuildRequires:	gettext-devel
 BuildRequires:	meson
@@ -56,7 +57,13 @@ Static libraries for fuse.
 
 %prep
 %autosetup -p1
-%meson -Duseroot=false -Db_lto=true
+# udevrulesdir is specified because it's misdetected when
+# crosscompiling.
+%meson -Duseroot=false \
+	-Db_lto=true \
+%if %{cross_compiling}
+	-Dudevrulesdir=%{_udevrulesdir}
+%endif
 
 %build
 %meson_build
