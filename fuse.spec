@@ -1,4 +1,5 @@
 %define major 3
+%define minor 4
 %define libname %mklibname %{name}3
 %define devname %mklibname %{name}3 -d
 %define static %mklibname %{name}3 -d -s
@@ -83,6 +84,7 @@ rm -rf %{buildroot}%{_sysconfdir}/init.d
 
 %files -n %{libname}
 %{_libdir}/libfuse3.so.%{major}*
+%{_libdir}/libfuse3.so.%{minor}*
 
 %files -n %{devname}
 %{_includedir}/*
